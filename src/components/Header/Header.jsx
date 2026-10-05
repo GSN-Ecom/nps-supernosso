@@ -5,8 +5,8 @@ import ChangeBusiness from "../../assets/icons/IconChangeBusiness";
 import { useGlobal } from "../../hooks/useGlobal";
 
 // bases de dados
-import ecom_AP from "../../data/dados_AP_Ecom.json";
-import lojafisica_AP from "../../data/dados_AP_Loja.json";
+import ecom_SN from "../../data/dados_SN_Ecom.json";
+import lojafisica_SN from "../../data/dados_SN_Loja.json";
 
 export default function Header() {
   const {
@@ -62,7 +62,7 @@ export default function Header() {
           className={`${styles.link} ${styles.changeReport}`}
           onClick={() => {
             const isEcom = typeBusiness === "Ecom";
-            setData(isEcom ? lojafisica_AP : ecom_AP);
+            setData(isEcom ? lojafisica_SN : ecom_SN);
             setTypeBusiness(isEcom ? "LojaF" : "Ecom");
             setSelectedStore({
               nroempresa: true,

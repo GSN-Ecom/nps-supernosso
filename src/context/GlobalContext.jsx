@@ -1,6 +1,6 @@
 import { useState, useEffect, createContext, useMemo } from "react";
-import ecom_AP from "../data/dados_AP_Ecom.json";
-import storesList from "../data/stores_AP_Ecom.json";
+import ecom_SN from "../data/dados_SN_Ecom.json";
+import storesList from "../data/stores_SN_Ecom.json";
 import corteSubst_AP from "../data/corteSubst";
 import lastUpdate from "../data/lastUpdate.json";
 
@@ -12,7 +12,7 @@ export function GlobalContextProvider({ children }) {
   // --------------------------------------------------------------------------
   const [typeBusiness, setTypeBusiness] = useState("Ecom");
   // Controle de exibição das respostas
-  const [data, setData] = useState(ecom_AP);
+  const [data, setData] = useState(ecom_SN);
 
   // base com os dados de cortexsubstituicao
   const [reportCortSub, setReportCortSub] = useState(corteSubst_AP);
