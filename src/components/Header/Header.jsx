@@ -1,6 +1,6 @@
 import styles from "./Header.module.css";
 import { logo } from "../../assets/imgs/logo/logo";
-import { data, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import ChangeBusiness from "../../assets/icons/IconChangeBusiness";
 import { useGlobal } from "../../hooks/useGlobal";
 
@@ -17,8 +17,6 @@ export default function Header() {
     setSelectedRating,
     setSelectedDelivery,
   } = useGlobal();
-
-
 
   return (
     <nav className={styles.navBar}>
