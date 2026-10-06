@@ -28,18 +28,18 @@ export default function Header() {
             className={styles.logo}
             src={
               typeBusiness !== "LojaF"
-                ? logo.apoioEntrega.img
-                : logo.apoioMineiro.img
+                ? logo.supernosso.img
+                : logo.supernossoLF.img
             }
             alt={
               typeBusiness !== "LojaF"
-                ? logo.apoioEntrega.alt
-                : logo.apoioMineiro.alt
+                ? logo.supernosso.alt
+                : logo.supernossoLF.alt
             }
             title={
               typeBusiness !== "LojaF"
-                ? logo.apoioEntrega.title
-                : logo.apoioMineiro.title
+                ? logo.supernosso.title
+                : logo.supernossoLF.title
             }
           />
         </NavLink>

@@ -15,10 +15,6 @@ import ChangeBusiness from "../../assets/icons/IconChangeBusiness";
 import ecom_SN from "../../data/dados_SN_Ecom.json";
 import lojafisica_SN from "../../data/dados_SN_Loja.json";
 
-// PENDENCIAS
-// criar menu mobile
-// criar modal e useState para controlar abertura
-// ${styles.active}
 
 export default function BottomBar() {
   const { isOpen, openModal, closeModal } = useModal();

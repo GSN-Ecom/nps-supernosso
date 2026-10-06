@@ -1,16 +1,15 @@
-import apoioEntrega from "./logo-apoio-entrega.png";
-import apoioMineiro from "./logo-apoio-mineiro.png";
+import supernosso from "./logo-supernosso.svg";
 
 const logo = {
-  apoioEntrega: {
-    img: apoioEntrega,
-    alt: "Apoio Entrega",
-    title: "Apoio Entrega",
+  supernosso: {
+    img: supernosso,
+    alt: "Supernosso",
+    title: "Supernosso",
   },
-  apoioMineiro: {
-    img: apoioMineiro,
-    alt: "Apoio Mineiro",
-    title: "Apoio Mineiro",
+  supernossoLF: {
+    img: supernosso,
+    alt: "Supernosso",
+    title: "Supernosso",
   },
 };
 

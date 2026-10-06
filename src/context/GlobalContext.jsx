@@ -1,7 +1,7 @@
 import { useState, useEffect, createContext, useMemo } from "react";
 import ecom_SN from "../data/dados_SN_Ecom.json";
 import storesList from "../data/stores_SN_Ecom.json";
-import corteSubst_AP from "../data/corteSubst";
+import corteSubst_SN from "../data/corteSubst";
 import lastUpdate from "../data/lastUpdate.json";
 
 // eslint-disable-next-line react-refresh/only-export-components
@@ -15,7 +15,7 @@ export function GlobalContextProvider({ children }) {
   const [data, setData] = useState(ecom_SN);
 
   // base com os dados de cortexsubstituicao
-  const [reportCortSub, setReportCortSub] = useState(corteSubst_AP);
+  const [reportCortSub, setReportCortSub] = useState(corteSubst_SN);
   const [storeCortSub, setStoreCortSub] = useState({ name: "Todas as lojas" });
 
   const filterCortSub = useMemo(
