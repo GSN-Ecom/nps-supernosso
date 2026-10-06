@@ -17,7 +17,7 @@ const Filters = () => {
           style={{ marginTop: "2rem" }}>
           <Title
             text={
-              typeBusiness !== "LojaF" ? "NPS AP Ecom" : "NPS AP Loja Física"
+              typeBusiness !== "LojaF" ? "NPS SN Ecom" : "NPS SN Loja Física"
             }
             style={{ fontSize: "var(--title-default)", width: "100%" }}
           />
