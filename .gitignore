@@ -25,3 +25,15 @@ dist/
 *.njsproj
 *.sln
 *.sw?
+
+# Backend local
+backend/node_modules/
+backend/dados/entrada/*
+!backend/dados/entrada/.gitkeep
+
+# Credenciais e arquivos locais
+.env
+.env.*
+!.env.example
+*.dump
+*.backup

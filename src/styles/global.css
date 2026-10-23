@@ -41,7 +41,7 @@
   --aux-white: #ffffff;
 
   --aux-red-02: rgb(255, 227, 227);
-  --aux-yellow-02: rgb(252, 249, 213);
+  --aux-yellow-02: rgb(252, 238, 213);
   --aux-green-02: rgb(211, 252, 200);
 
   /*Gray*/
@@ -56,8 +56,8 @@
   --gray-09: #212529;
 
   /* font */
-  --sans: system-ui, "Segoe UI", Roboto, sans-serif;
-  --heading: system-ui, "Segoe UI", Roboto, sans-serif;
+  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
   --mono: ui-monospace, Consolas, monospace;
 }
 

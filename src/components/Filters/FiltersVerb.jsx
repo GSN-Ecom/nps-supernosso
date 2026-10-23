@@ -1,31 +1,39 @@
-import { useState } from "react";
-import styles from "./Filters.module.css";
-import SelectFilter from "../SelectFilter/SelectFilter";
-import { Calendar } from "primereact/calendar";
-import { useGlobal } from "../../hooks/useGlobal";
-import Modal from "../Modal/Modal";
-import useModal from "../../hooks/useModal";
-import { Button } from "primereact/button";
+// base de lojas
+import storesList from '../../../src/data/stores_SN_Ecom.json';
 
-import IconFilter from "../../assets/icons/IconFilter";
+import { useState } from 'react';
+import { useGlobal } from '../../hooks/useGlobal';
+import useModal from '../../hooks/useModal';
+import Modal from '../Modal/Modal';
+import SelectFilter from '../SelectFilter/SelectFilter';
+import IconFilter from '../../assets/icons/IconFilter';
+import { Button } from 'primereact/button';
+import { Calendar } from 'primereact/calendar';
 
-const FiltersVerb = () => {
+// estilização
+import styles from './Filters.module.css';
+import { normalizeDateVerb } from '../../services/normalizeDate';
+
+const FiltersVerb = ({
+  storesNum,
+  deliveryType,
+  ratingType,
+  detractorsList,
+}) => {
   const {
     typeBusiness,
     date,
     setDate,
-    stores,
-    filter,
     selectedStore,
     setSelectedStore,
     selectedDelivery,
     setSelectedDelivery,
     selectedRating,
     setSelectedRating,
-    detrList,
     selectedDetr,
     setSelectedDetr,
   } = useGlobal();
+  const { isOpen, openModal, closeModal } = useModal();
 
   const [feedback, setFeedback] = useState(null);
   const [modalValues, setModalValues] = useState({
@@ -36,44 +44,28 @@ const FiltersVerb = () => {
     dataFim: null,
   });
 
-  // modal filtros
-  const { isOpen, openModal, closeModal } = useModal();
-
-  // inserindo lojas ativas dentro do filtro (select)
+  // conteudo dos filtros (select)
   const activeStores = [
-    { nroempresa: true, name: "Todas as lojas" },
-    ...stores
-      .filter((loja) => filter.lojas.includes(Number(loja.numStore)))
+    { nroempresa: true, name: 'Todas as lojas' },
+    ...storesList
+      .filter((loja) => storesNum?.includes(Number(loja.numStore)))
       .map((loja) => ({
         nroempresa: loja.numStore,
-        name: `${loja.name} (${loja.numStore})`,
+        name: `(${loja.numStore}) ${loja.name}`,
       })),
   ];
 
-  // inserindo modalidades de entrega ativas dentro do filtro (select)
   const activeDelivery = [
-    {
-      name: "Todas",
-    },
-    ...filter.entrega
-      .filter((delivery) => delivery !== "")
-      .map((delivery) => ({ name: delivery })),
+    { name: 'Todas' },
+    ...deliveryType.map((delivery) => ({ name: delivery })),
   ];
 
-  // inserindo os tipos de avaliação dentro do filtro (select)
   const activeRating = [
-    { name: "Todas" },
-    ...filter.reviews.map((review) => ({ name: review })),
+    { name: 'Todas' },
+    ...ratingType.map((review) => ({ name: review })),
   ];
 
-  let dataFormatada = (value) => {
-    return value.toLocaleDateString("pt-BR", {
-      day: "2-digit",
-      month: "2-digit",
-      year: "2-digit",
-    });
-  };
-
+  // para aplicar os filtros no modal mobile
   function applyFilters(filters) {
     const hasFilters =
       filters.loja !== null ||
@@ -89,7 +81,7 @@ const FiltersVerb = () => {
     setSelectedDelivery(filters.delivery);
 
     setFeedback(() => {
-      let text = "";
+      let text = '';
 
       if (filters.loja && filters.loja.name) text += `${filters.loja.name}. `;
       if (filters.rating && filters.rating.name)
@@ -97,7 +89,7 @@ const FiltersVerb = () => {
       if (filters.delivery && filters.delivery.name)
         text += `${filters.delivery.name}.`;
       if (date.inicio && date.fim)
-        text += `${dataFormatada(date.inicio)} até ${dataFormatada(date.fim)}.`;
+        text += `${normalizeDateVerb(date.inicio)} até ${normalizeDateVerb(date.fim)}.`;
 
       return text;
     });
@@ -163,7 +155,7 @@ const FiltersVerb = () => {
           <p className="textDefault">Lojas:</p>
           <SelectFilter
             options={activeStores}
-            valueCurr={modalValues.loja || "Todas as lojas"}
+            valueCurr={modalValues.loja || 'Todas as lojas'}
             changeValue={(event) =>
               setModalValues((current) => ({
                 ...current,
@@ -176,7 +168,7 @@ const FiltersVerb = () => {
           <p className="textDefault">Tipo de avaliação:</p>
           <SelectFilter
             options={activeRating}
-            valueCurr={modalValues.rating || "Todas as avaliações"}
+            valueCurr={modalValues.rating || 'Todas as avaliações'}
             changeValue={(event) =>
               setModalValues((current) => ({
                 ...current,
@@ -185,12 +177,12 @@ const FiltersVerb = () => {
             }
           />
         </div>
-        {typeBusiness !== "LojaF" && (
+        {typeBusiness !== 'LojaF' && (
           <div className={styles.slot}>
             <p className="textDefault">Entrega:</p>
             <SelectFilter
               options={activeDelivery}
-              valueCurr={modalValues.delivery || "Todos os tipos"}
+              valueCurr={modalValues.delivery || 'Todos os tipos'}
               changeValue={(event) =>
                 setModalValues((current) => ({
                   ...current,
@@ -257,7 +249,7 @@ const FiltersVerb = () => {
                 changeValue={setSelectedRating}
               />
             </div>
-            {typeBusiness !== "LojaF" && (
+            {typeBusiness !== 'LojaF' && (
               <div className={`${styles.slot} ${styles.selectInput}`}>
                 <p className="textDefault">Entrega:</p>
                 <SelectFilter
@@ -304,13 +296,13 @@ const FiltersVerb = () => {
             onClick={() => {
               openModal();
             }}
-            className={`${styles.filterBtn} ${"textDefault"}`}>
+            className={`${styles.filterBtn} ${'textDefault'}`}>
             <b>Filtros</b>
             <IconFilter
               className="icon"
               width="20px"
               height="20px"
-              color={"var(--ap-primary)"}
+              color={'var(--ap-primary)'}
             />
           </p>
           {feedback && (
@@ -320,27 +312,27 @@ const FiltersVerb = () => {
             </p>
           )}
         </div>
-        {detrList.length > 0 && (
+        {detractorsList.length > 0 && (
           <div className={styles.filters}>
-            <p className={`${"textDefault"} ${styles.labelTags}`}>
+            <p className={`${'textDefault'} ${styles.labelTags}`}>
               <b>Detratores:</b>
             </p>
             <div className={styles.detrTags}>
               <p
-                className={`${selectedDetr !== "Todos" ? styles.detrTag : styles.detrTagActive} ${"textDefault"}`}
+                className={`${selectedDetr !== 'Todas' ? styles.detrTag : styles.detrTagActive} ${'textDefault'}`}
                 onClick={() => {
-                  setSelectedDetr("Todas");
+                  setSelectedDetr('Todas');
                 }}>
                 Todas
               </p>
-              {detrList.map((e) => (
+              {detractorsList.map((e) => (
                 <p
-                  key={e.key}
-                  className={`${selectedDetr !== e.name ? styles.detrTag : styles.detrTagActive} ${"textDefault"}`}
+                  key={e.detractor}
+                  className={`${selectedDetr !== e.detractor ? styles.detrTag : styles.detrTagActive} ${'textDefault'}`}
                   onClick={() => {
-                    setSelectedDetr(e.key);
+                    setSelectedDetr(e.detractor);
                   }}>
-                  {e.name}
+                  {`${e.detractor} (${e.qtd})`}
                 </p>
               ))}
             </div>

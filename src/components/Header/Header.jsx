@@ -1,17 +1,12 @@
-import styles from "./Header.module.css";
-import { logo } from "../../assets/imgs/logo/logo";
-import { NavLink } from "react-router-dom";
-import ChangeBusiness from "../../assets/icons/IconChangeBusiness";
-import { useGlobal } from "../../hooks/useGlobal";
-
-// bases de dados
-import ecom_SN from "../../data/dados_SN_Ecom.json";
-import lojafisica_SN from "../../data/dados_SN_Loja.json";
+import styles from './Header.module.css';
+import { logo } from '../../assets/imgs/logo/logo';
+import { NavLink } from 'react-router-dom';
+import ChangeBusiness from '../../assets/icons/IconChangeBusiness';
+import { useGlobal } from '../../hooks/useGlobal';
 
 export default function Header() {
   const {
     setTypeBusiness,
-    setData,
     typeBusiness,
     setSelectedStore,
     setSelectedRating,
@@ -25,17 +20,17 @@ export default function Header() {
           <img
             className={styles.logo}
             src={
-              typeBusiness !== "LojaF"
+              typeBusiness !== 'LojaF'
                 ? logo.supernosso.img
                 : logo.supernossoLF.img
             }
             alt={
-              typeBusiness !== "LojaF"
+              typeBusiness !== 'LojaF'
                 ? logo.supernosso.alt
                 : logo.supernossoLF.alt
             }
             title={
-              typeBusiness !== "LojaF"
+              typeBusiness !== 'LojaF'
                 ? logo.supernosso.title
                 : logo.supernossoLF.title
             }
@@ -50,7 +45,7 @@ export default function Header() {
         <NavLink to="/respostas" className={styles.link}>
           <p className="textDefault">Respostas</p>
         </NavLink>
-        {typeBusiness !== "LojaF" && (
+        {typeBusiness !== 'LojaF' && (
           <NavLink to="/corte-substituicao" className={styles.link}>
             <p className="textDefault">Corte x Substituição</p>
           </NavLink>
@@ -59,18 +54,17 @@ export default function Header() {
           to=""
           className={`${styles.link} ${styles.changeReport}`}
           onClick={() => {
-            const isEcom = typeBusiness === "Ecom";
-            setData(isEcom ? lojafisica_SN : ecom_SN);
-            setTypeBusiness(isEcom ? "LojaF" : "Ecom");
+            const isEcom = typeBusiness === 'Ecom';
+            setTypeBusiness(isEcom ? 'LojaF' : 'Ecom');
             setSelectedStore({
               nroempresa: true,
-              name: "Todas as lojas",
+              name: 'Todas as lojas',
             });
             setSelectedDelivery({
-              name: "Todas",
+              name: 'Todas',
             });
             setSelectedRating({
-              name: "Todas",
+              name: 'Todas',
             });
           }}>
           <ChangeBusiness
@@ -80,7 +74,7 @@ export default function Header() {
             color="#ce2b43"
           />
           <p className="textDefault">
-            {typeBusiness !== "LojaF" ? "Mudar > Loja F." : "Mudar > Ecom"}
+            {typeBusiness !== 'LojaF' ? 'Mudar > Loja F.' : 'Mudar > Ecom'}
           </p>
         </NavLink>
       </div>

@@ -1,25 +1,16 @@
 // components
-import Header from "../../components/Header/Header";
-import { NPSReviews } from "../../components/Charts/NPSReviews";
-import Filters from "../../components/Filters/Filters";
-import { TableNPS } from "../../components/TableNPS/TableNPS";
-import BottomBar from "../../components/BottomBar/BottomBar";
+import Header from '../../components/Header/Header';
+import Filters from '../../components/Filters/Filters';
+import BottomBar from '../../components/BottomBar/BottomBar';
 // context
-import { useGlobal } from "../../hooks/useGlobal";
-import { useCalcNps, useY2Y } from "../../hooks/useNPS";
+import { useGlobal } from '../../hooks/useGlobal';
+import TableNpsStore from '../../components/TableNPS/TableStoreNps';
+import ChartNps from '../../components/Charts/ChartNps';
+import ChartYearNps from '../../components/Charts/ChartYearNps';
 
 const Dashboard = () => {
   // hooks data definida pelo usuário
   const { date } = useGlobal();
-
-  // hook year to year para gráfico geral
-  const { currentYear, currYear, prevYear } = useY2Y();
-
-  // controle da criação da base exibida no dashboard
-  const { notas, summary, notasComp, storesTableNPS } = useCalcNps(
-    date.inicio,
-    date.fim,
-  );
 
   return (
     <>
@@ -28,26 +19,13 @@ const Dashboard = () => {
       <Filters />
       <div className="contentRowChart">
         <div className="contentColChart">
-          <NPSReviews
-            primaryData={notas}
-            secondaryData={notasComp}
-            typeChart="scale-nps"
-            summary={summary}
-            date={date}
-          />
+          <ChartNps typeChart="NPS Geral" date={date} />
         </div>
         <div className="contentColChart">
-          <NPSReviews
-            primaryData={currYear}
-            secondaryData={prevYear}
-            typeChart="Y2Y"
-            summary=""
-            year={currentYear}
-            date={date}
-          />
+          <ChartYearNps typeChart="NPS Y2Y" year={new Date().getFullYear()} />
         </div>
       </div>
-      <TableNPS dados={storesTableNPS} />
+      <TableNpsStore dados={date} />
     </>
   );
 };

@@ -1,26 +1,20 @@
-import styles from "./BottomBar.module.css";
-import { NavLink } from "react-router-dom";
-import IconHome from "../../assets/icons/IconHome";
-import IconChange from "../../assets/icons/IconChange";
-import IconVerb from "../../assets/icons/IconVerb";
-import IconMenu from "../../assets/icons/IconMenu";
-import useModal from "../../hooks/useModal";
-import IconDetrator from "../../assets/icons/IconDetrator";
-import Modal from "../Modal/Modal";
-import { useGlobal } from "../../hooks/useGlobal";
-import IconArrow from "../../assets/icons/IconArrow";
-import ChangeBusiness from "../../assets/icons/IconChangeBusiness";
-
-// bases de dados
-import ecom_SN from "../../data/dados_SN_Ecom.json";
-import lojafisica_SN from "../../data/dados_SN_Loja.json";
-
+import styles from './BottomBar.module.css';
+import { NavLink } from 'react-router-dom';
+import IconHome from '../../assets/icons/IconHome';
+import IconChange from '../../assets/icons/IconChange';
+import IconVerb from '../../assets/icons/IconVerb';
+import IconMenu from '../../assets/icons/IconMenu';
+import useModal from '../../hooks/useModal';
+import IconDetrator from '../../assets/icons/IconDetrator';
+import Modal from '../Modal/Modal';
+import { useGlobal } from '../../hooks/useGlobal';
+import IconArrow from '../../assets/icons/IconArrow';
+import ChangeBusiness from '../../assets/icons/IconChangeBusiness';
 
 export default function BottomBar() {
   const { isOpen, openModal, closeModal } = useModal();
   const {
     typeBusiness,
-    setData,
     setTypeBusiness,
     setSelectedStore,
     setSelectedDelivery,
@@ -44,7 +38,7 @@ export default function BottomBar() {
         <p className="textDefault">Detratores</p>
         <IconArrow className="icon" width="16px" height="16px" />
       </NavLink>
-      {typeBusiness !== "LojaF" && (
+      {typeBusiness !== 'LojaF' && (
         <NavLink to="/corte-substituicao" className={styles.slotMenuHamb}>
           <IconChange
             className="icon"
@@ -60,18 +54,17 @@ export default function BottomBar() {
         to=""
         className={styles.slotMenuHamb}
         onClick={() => {
-          const isEcom = typeBusiness === "Ecom";
-          setData(isEcom ? lojafisica_SN : ecom_SN);
-          setTypeBusiness(isEcom ? "LojaF" : "Ecom");
+          const isEcom = typeBusiness === 'Ecom';
+          setTypeBusiness(isEcom ? 'LojaF' : 'Ecom');
           setSelectedStore({
             nroempresa: true,
-            name: "Todas as lojas",
+            name: 'Todas as lojas',
           });
           setSelectedDelivery({
-            name: "Todas",
+            name: 'Todas',
           });
           setSelectedRating({
-            name: "Todas",
+            name: 'Todas',
           });
           closeModal();
         }}>
@@ -82,9 +75,9 @@ export default function BottomBar() {
           color="var(--gray-08)"
         />
         <p className="textDefault">
-          {typeBusiness !== "LojaF"
-            ? "Acessar NPS Loja Física"
-            : "Acessar NPS Ecommerce"}
+          {typeBusiness !== 'LojaF'
+            ? 'Acessar NPS Loja Física'
+            : 'Acessar NPS Ecommerce'}
         </p>
         <IconArrow className="icon" width="16px" height="16px" />
       </NavLink>
@@ -112,7 +105,7 @@ export default function BottomBar() {
           />
           <p className="textLabel">Detratores</p>
         </NavLink>
-        {typeBusiness !== "LojaF" && (
+        {typeBusiness !== 'LojaF' && (
           <NavLink to="/corte-substituicao" className={`${styles.slot}`}>
             <IconChange
               className="icon"

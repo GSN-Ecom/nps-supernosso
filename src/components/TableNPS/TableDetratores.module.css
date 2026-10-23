@@ -10,6 +10,7 @@
 
 .titleTable {
   color: var(--aux-white) !important;
+  text-transform: capitalize;
 }
 
 .header,
@@ -102,8 +103,8 @@
   .contentTable .slot:first-child {
     flex: 2;
     width: 100%;
-    min-width: 88px;
-    max-width: 88px;
+    min-width: 64px;
+    max-width: 64px;
   }
 
   .header .slot:first-child p,

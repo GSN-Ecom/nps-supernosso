@@ -86,6 +86,7 @@
   flex: 0.3;
   text-align: center;
   align-content: center;
+  cursor: pointer;
 }
 
 /* tamanho das células, desktop */
@@ -260,6 +261,26 @@
 }
 .answerModalContent .col:last-child {
   flex: 0.6;
+}
+
+/* customizacao modal */
+.modalContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.rowModal {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.labelDetractors {
+  background: var(--aux-red-02);
+  color: var(--aux-red) !important;
+  margin: 0.25rem 0.5rem 0 0;
+  padding: 0.25rem;
+  border-radius: var(--radius-small);
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {

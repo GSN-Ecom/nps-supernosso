@@ -1,18 +1,13 @@
-import Header from "../../components/Header/Header";
-import { CustomerResp } from "../../components/TableNPS/TableNPS";
-import { useCalcNps } from "../../hooks/useNPS";
-import { useGlobal } from "../../hooks/useGlobal";
-import BottomBar from "../../components/BottomBar/BottomBar";
+import Header from '../../components/Header/Header';
+import BottomBar from '../../components/BottomBar/BottomBar';
+import { TableAnswers } from '../../components/TableNPS/TableAnswers';
 
 const Verbalizacoes = () => {
-  const { date } = useGlobal();
-  const { baseVerb } = useCalcNps(date.inicio, date.fim);
-
   return (
     <>
       <Header />
       <BottomBar />
-      <CustomerResp dados={baseVerb} />
+      <TableAnswers />
     </>
   );
 };

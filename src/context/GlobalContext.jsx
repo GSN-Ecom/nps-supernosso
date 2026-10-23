@@ -1,8 +1,7 @@
-import { useState, useEffect, createContext, useMemo } from "react";
-import ecom_SN from "../data/dados_SN_Ecom.json";
-import storesList from "../data/stores_SN_Ecom.json";
-import corteSubst_SN from "../data/corteSubst";
-import lastUpdate from "../data/lastUpdate.json";
+import { useState, useEffect, createContext, useMemo } from 'react';
+import storesList from '../data/stores_SN_Ecom.json';
+import corteSubst_SN from '../data/corteSubst';
+import lastUpdate from '../data/lastUpdate.json';
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const GlobalContext = createContext();
@@ -10,17 +9,15 @@ export const GlobalContext = createContext();
 export function GlobalContextProvider({ children }) {
   // BOTÃO TROCA DE RELATORIO ALTERA O ESTADO DOS COMPONENTES ABAIXO
   // --------------------------------------------------------------------------
-  const [typeBusiness, setTypeBusiness] = useState("Ecom");
-  // Controle de exibição das respostas
-  const [data, setData] = useState(ecom_SN);
+  const [typeBusiness, setTypeBusiness] = useState('Ecom');
 
   // base com os dados de cortexsubstituicao
   const [reportCortSub, setReportCortSub] = useState(corteSubst_SN);
-  const [storeCortSub, setStoreCortSub] = useState({ name: "Todas as lojas" });
+  const [storeCortSub, setStoreCortSub] = useState({ name: 'Todas as lojas' });
 
   const filterCortSub = useMemo(
     () =>
-      ["Todas as lojas", ...new Set(reportCortSub.map((e) => e.loja))].map(
+      ['Todas as lojas', ...new Set(reportCortSub.map((e) => e.loja))].map(
         (loja) => ({ name: loja }),
       ),
     [reportCortSub],
@@ -33,7 +30,7 @@ export function GlobalContextProvider({ children }) {
 
   // data e ano referencia para relatorios
   const [date, setDate] = useState(() => {
-    const savedDate = localStorage.getItem("dateRange");
+    const savedDate = localStorage.getItem('dateRange');
 
     if (savedDate) {
       const datas = JSON.parse(savedDate);
@@ -55,32 +52,32 @@ export function GlobalContextProvider({ children }) {
   });
 
   useEffect(() => {
-    localStorage.setItem("dateRange", JSON.stringify(date));
+    localStorage.setItem('dateRange', JSON.stringify(date));
   }, [date]);
 
   // filtros
   const [selectedStore, setSelectedStore] = useState({
     nroempresa: true,
-    name: "Todas as lojas",
+    name: 'Todas as lojas',
   });
 
   // controle filtro modalidade de entrega
   const [selectedDelivery, setSelectedDelivery] = useState({
-    name: "Todas",
+    name: 'Todas',
   });
 
   // controle filtro por tipo de avaliação (detrator, neutro, promotor)
   const [selectedRating, setSelectedRating] = useState({
-    name: "Todas",
+    name: 'Todas',
   });
 
   // controle detratores macro
   const [detrList, setDetrList] = useState([]);
-  const [selectedDetr, setSelectedDetr] = useState("Todas");
+  const [selectedDetr, setSelectedDetr] = useState('Todas');
 
   const [filter, setFilter] = useState({
     lojas: [],
-    reviews: ["Promotor", "Neutro", "Detrator"],
+    reviews: ['Promotor', 'Neutro', 'Detrator'],
     entrega: [],
   });
 
@@ -93,8 +90,6 @@ export function GlobalContextProvider({ children }) {
   return (
     <GlobalContext.Provider
       value={{
-        data,
-        setData,
         typeBusiness,
         setTypeBusiness,
         reportCortSub,
