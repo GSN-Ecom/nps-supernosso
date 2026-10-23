@@ -1,11 +1,11 @@
 /* eslint-disable no-unused-vars */
 // ecom
-import macroEcomDetr from '../../../src/data/ecomcontarDetratoresMacro.json';
-import microEcomDetr from '../../../src/data/ecomcontarDetratoresMicro.json';
+import macroEcomDetr from '../../data/ecomcontarDetratoresMacro.json';
+import microEcomDetr from '../../data/ecomContarDetratoresMicro.json';
 
 // loja fisica
-import macroLojaFDetr from '../../../src/data/LojaFcontarDetratoresMacro.json';
-import microLojaFDetr from '../../../src/data/LojaFcontarDetratoresMicro.json';
+import macroLojaFDetr from '../../data/lojaFcontarDetratoresMacro.json';
+import microLojaFDetr from '../../data/lojaFContarDetratoresMicro.json';
 import { useGlobal } from '../../hooks/useGlobal';
 import { months } from '../../services/months';
 import { TableDetractorsYearRows } from './TableDetractorsYearRows';
