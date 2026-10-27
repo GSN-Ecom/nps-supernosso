@@ -66,7 +66,7 @@ async function executarImportacao() {
         validas: resultado.validas,
         invalidas: resultado.invalidas,
         inseridas: resultado.inseridas,
-        duplicadas: resultado.duplicadas,
+        atualizadas: resultado.atualizadas,
       });
     } else if (origem === 'loja') {
       const resultado = await importarRespostasLoja(dados);
@@ -75,7 +75,7 @@ async function executarImportacao() {
         validas: resultado.validas,
         invalidas: resultado.invalidas,
         inseridas: resultado.inseridas,
-        duplicadas: resultado.duplicadas,
+        atualizadas: resultado.atualizadas,
       });
     } else {
       throw new Error(

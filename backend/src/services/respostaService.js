@@ -15,7 +15,7 @@ export async function importarRespostasEcom(arr) {
     validas,
     invalidas,
     inseridas: resultadoLote.inseridas,
-    duplicadas: validas - resultadoLote.inseridas,
+    atualizadas: resultadoLote.atualizadas,
     detalhesInvalidos: respostas.invalidas,
   };
 }
@@ -32,7 +32,7 @@ export async function importarRespostasLoja(arr) {
     validas,
     invalidas,
     inseridas: resultadoLote.inseridas,
-    duplicadas: validas - resultadoLote.inseridas,
+    atualizadas: resultadoLote.atualizadas,
     detalhesInvalidos: respostas.invalidas,
   };
 }

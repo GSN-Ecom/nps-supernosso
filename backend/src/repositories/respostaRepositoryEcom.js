@@ -10,10 +10,12 @@ export async function inserirRespostasEcomEmLote(respostas) {
   if (respostas.length === 0) {
     return {
       inseridas: 0,
+      atualizadas: 0,
     };
   }
 
   let inseridas = 0;
+  let atualizadas = 0;
 
   for (let inicio = 0; inicio < respostas.length; inicio += TAMANHO_LOTE) {
     const lote = respostas.slice(inicio, inicio + TAMANHO_LOTE);
@@ -75,14 +77,42 @@ export async function inserirRespostasEcomEmLote(respostas) {
         neut_prom_justif
       )
       VALUES ${placeholders.join(', ')}
-      ON CONFLICT (orderid) DO NOTHING;
+      ON CONFLICT (orderid) DO UPDATE SET
+        name = EXCLUDED.name,
+        email = EXCLUDED.email,
+        date = EXCLUDED.date,
+        store = EXCLUDED.store,
+        delivery = EXCLUDED.delivery,
+        coupon = EXCLUDED.coupon,
+        nps = EXCLUDED.nps,
+        detmacro = EXCLUDED.detmacro,
+        det_atendimento = EXCLUDED.det_atendimento,
+        det_pagamento = EXCLUDED.det_pagamento,
+        det_siteapp = EXCLUDED.det_siteapp,
+        det_retirada = EXCLUDED.det_retirada,
+        det_entrega = EXCLUDED.det_entrega,
+        det_preco = EXCLUDED.det_preco,
+        det_produto = EXCLUDED.det_produto,
+        det_justif = EXCLUDED.det_justif,
+        tags = EXCLUDED.tags,
+        neut_prom_macro = EXCLUDED.neut_prom_macro,
+        neut_prom_justif = EXCLUDED.neut_prom_justif
+      RETURNING (xmax = 0) AS inserida;
     `;
 
     const resultado = await pool.query(sql, valores);
-    inseridas += resultado.rowCount;
+
+    for (const linha of resultado.rows) {
+      if (linha.inserida) {
+        inseridas++;
+      } else {
+        atualizadas++;
+      }
+    }
   }
 
   return {
     inseridas,
+    atualizadas,
   };
 }
