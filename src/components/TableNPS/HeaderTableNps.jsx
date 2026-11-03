@@ -6,10 +6,12 @@ import styles from './TableNPS.module.css';
 
 export const HeaderTableNps = () => {
   return (
-    <div className={styles.HeaderTable}>
+    <div className={`${styles.HeaderTable} ${'printHeaderTable'}`}>
       {headerTable &&
         headerTable.map((e) => (
-          <p key={e} className={`${'textDefault'} ${styles.cell}`}>
+          <p
+            key={e}
+            className={`${'textDefault'} ${styles.cell} ${'printCell'}`}>
             {e}
           </p>
         ))}
@@ -17,7 +19,7 @@ export const HeaderTableNps = () => {
         return (
           <p
             key={i}
-            className={`${'textDefault'} ${styles.deskView} ${styles.cell} ${i <= 6 ? `${styles.regression}` : ''}
+            className={`${'textDefault'} ${styles.deskView} ${styles.cell} ${'printCell'} ${i <= 6 ? `${styles.regression}` : ''}
                     ${i <= 8 && i >= 7 ? `${styles.neutros}` : ''}
                     ${i >= 9 ? `${styles.growth}` : ''}`}>
             {i}
@@ -28,14 +30,16 @@ export const HeaderTableNps = () => {
         return (
           <p
             key={i}
-            className={`${'textDefault'} ${styles.mobileView} ${styles.cell} ${i === 0 ? `${styles.regression}` : ''}
+            className={`${'textDefault'} ${styles.mobileView} ${styles.cell} ${'printCell'} ${i === 0 ? `${styles.regression}` : ''}
                     ${i === 1 ? `${styles.neutros}` : ''}
                     ${i === 2 ? `${styles.growth}` : ''}`}>
             {e}
           </p>
         );
       })}
-      <p className={`${'textDefault'} ${styles.cell}`}>Justif. Detratores</p>
+      <p className={`${'textDefault'} ${styles.cell} ${'printCell'}`}>
+        Justif. Detratores
+      </p>
     </div>
   );
 };

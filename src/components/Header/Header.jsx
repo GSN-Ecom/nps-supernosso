@@ -3,6 +3,7 @@ import { logo } from '../../assets/imgs/logo/logo';
 import { NavLink } from 'react-router-dom';
 import ChangeBusiness from '../../assets/icons/IconChangeBusiness';
 import { useGlobal } from '../../hooks/useGlobal';
+import { normalizeDateVerb } from '../../services/normalizeDate';
 
 export default function Header() {
   const {
@@ -11,10 +12,11 @@ export default function Header() {
     setSelectedStore,
     setSelectedRating,
     setSelectedDelivery,
+    date,
   } = useGlobal();
 
   return (
-    <nav className={styles.navBar}>
+    <nav className={`${styles.navBar} ${'navBar'}`}>
       <div className="contentRow">
         <NavLink to="/" end>
           <img
@@ -52,7 +54,7 @@ export default function Header() {
         )}
         <NavLink
           to=""
-          className={`${styles.link} ${styles.changeReport}`}
+          className={`${styles.link} ${styles.changeReport} ${'noPrint'}`}
           onClick={() => {
             const isEcom = typeBusiness === 'Ecom';
             setTypeBusiness(isEcom ? 'LojaF' : 'Ecom');
@@ -77,6 +79,12 @@ export default function Header() {
             {typeBusiness !== 'LojaF' ? 'Mudar > Loja F.' : 'Mudar > Ecom'}
           </p>
         </NavLink>
+        <div className={`${styles.printView} ${'date'}`}>
+          <p className="textSmall">
+            Relatório referente ao período {normalizeDateVerb(date.inicio)} até{' '}
+            {normalizeDateVerb(date.fim)}
+          </p>
+        </div>
       </div>
     </nav>
   );

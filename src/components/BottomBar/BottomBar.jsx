@@ -87,7 +87,7 @@ export default function BottomBar() {
   return (
     <>
       <Modal isOpen={isOpen} onClose={closeModal} content={modalContent} />
-      <nav className={styles.bottomBar}>
+      <nav className={`${styles.bottomBar} ${styles.noPrint}`}>
         <NavLink to="/" className={`${styles.slot}`}>
           <IconHome className="icon" width="28px" height="28px" />
           <p className="textLabel">Home</p>

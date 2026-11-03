@@ -2,6 +2,13 @@
   display: none;
 }
 
+@media print {
+  /* Ocultar elementos */
+  .noPrint {
+    display: none !important;
+  }
+}
+
 @media (min-width: 768px) and (max-width: 1023px) {
   .bottomBar {
     position: fixed;

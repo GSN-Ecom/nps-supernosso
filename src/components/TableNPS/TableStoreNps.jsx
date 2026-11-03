@@ -21,8 +21,8 @@ const TableNpsStore = ({ dados }) => {
   const [storeModal, setStoreModal] = useState(null);
   const [loading, setLoading] = useState(true);
   const [erro, setErro] = useState(null);
-  const styleCell = `${'textDefault'} ${styles.cell}`;
-  const styleCellMob = `${'textDefault'} ${styles.mobileView} ${styles.cell}`;
+  const styleCell = `${'textDefault'} ${styles.cell} ${'printCell'}`;
+  const styleCellMob = `${'textDefault'} ${styles.mobileView} ${styles.cell} ${'printCell'}`;
 
   useEffect(() => {
     let ativo = true;
@@ -68,7 +68,7 @@ const TableNpsStore = ({ dados }) => {
 
   return (
     <>
-      <div className={styles.rankingTable}>
+      <div className={`${styles.rankingTable} ${'printTableStore'}`}>
         <HeaderTableNps />
         {loading}
         {!loading &&
@@ -81,7 +81,7 @@ const TableNpsStore = ({ dados }) => {
                   setStoreModal(store);
                 }}
                 key={store.nroempresa}
-                className={`${styles.rowTable} ${styles.rowRnkStores} ${i % 2 !== 0 ? styles.rowBg : ''}`}>
+                className={`${styles.rowTable} ${styles.rowRnkStores} ${'printRowTable'} ${i % 2 !== 0 ? styles.rowBg : ''}`}>
                 <p className={styleCell}>
                   <b>{store.nroempresa}</b>
                 </p>
@@ -98,7 +98,7 @@ const TableNpsStore = ({ dados }) => {
                   return (
                     <p
                       key={i}
-                      className={`${'textDefault'} ${styles.deskView} ${styles.cell}`}>
+                      className={`${'textDefault'} ${styles.deskView} ${styles.cell} ${'printCell'}`}>
                       {e}
                     </p>
                   );

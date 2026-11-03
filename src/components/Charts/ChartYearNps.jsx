@@ -65,7 +65,7 @@ export function ChartYearNps({ typeChart, year }) {
 
   return (
     <>
-      <div className={`${'card'} ${styles.chartCanva}`}>
+      <div className={`${'chartPrint'} ${styles.chartCanva}`}>
         <Chart type="bar" data={chartData} options={chartOptions} />
       </div>
     </>

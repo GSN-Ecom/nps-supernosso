@@ -1,9 +1,9 @@
-import { Title } from "../Title/Title";
-import { useLocation } from "react-router-dom";
-import styles from "./Filters.module.css";
-import { Calendar } from "primereact/calendar";
-import { useGlobal } from "../../hooks/useGlobal.jsx";
-import Breadcrumb from "../Breadcrumb/Breadcrumb.jsx";
+import { Title } from '../Title/Title';
+import { useLocation } from 'react-router-dom';
+import styles from './Filters.module.css';
+import { Calendar } from 'primereact/calendar';
+import { useGlobal } from '../../hooks/useGlobal.jsx';
+import Breadcrumb from '../Breadcrumb/Breadcrumb.jsx';
 
 const Filters = () => {
   const { date, setDate, typeBusiness } = useGlobal();
@@ -13,17 +13,17 @@ const Filters = () => {
       <div className="blockTitle">
         <Breadcrumb pathname={useLocation().pathname} />
         <div
-          className={`${"contentRow"} ${styles.titleFilters}`}
-          style={{ marginTop: "2rem" }}>
+          className={`${'contentRow'} ${styles.titleFilters}`}
+          style={{ marginTop: '2rem' }}>
           <Title
             text={
-              typeBusiness !== "LojaF" ? "NPS SN Ecom" : "NPS SN Loja Física"
+              typeBusiness !== 'LojaF' ? 'NPS SN Ecom' : 'NPS SN Loja Física'
             }
-            style={{ fontSize: "var(--title-default)", width: "100%" }}
+            style={{ fontSize: 'var(--title-default)', width: '100%' }}
           />
           <div
-            className={`${styles.filters} ${styles.dateFilter}`}
-            style={{ width: "auto" }}>
+            className={`${styles.filters} ${styles.dateFilter} ${'noPrint'}`}
+            style={{ width: 'auto' }}>
             <div className={styles.rowFilters}>
               <div className={styles.slot}>
                 <label htmlFor="dataInicio" className="textDefault">

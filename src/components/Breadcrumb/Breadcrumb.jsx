@@ -1,17 +1,17 @@
-import { Link } from "react-router-dom";
-import IconHome from "../../assets/icons/IconHome";
-import styles from "./Breadcrumb.module.css";
-import IconVerb from "../../assets/icons/IconVerb";
-import IconArrow from "../../assets/icons/IconArrow";
-import IconDetrator from "../../assets/icons/IconDetrator";
-import IconChange from "../../assets/icons/IconChange";
+import { Link } from 'react-router-dom';
+import IconHome from '../../assets/icons/IconHome';
+import styles from './Breadcrumb.module.css';
+import IconVerb from '../../assets/icons/IconVerb';
+import IconArrow from '../../assets/icons/IconArrow';
+import IconDetrator from '../../assets/icons/IconDetrator';
+import IconChange from '../../assets/icons/IconChange';
 
 const Breadcrumb = ({ pathname }) => {
-  if (pathname === "/") return;
+  if (pathname === '/') return;
 
   let icon;
 
-  if (pathname === "/detratores")
+  if (pathname === '/detratores')
     icon = (
       <IconDetrator
         className="icon"
@@ -20,7 +20,7 @@ const Breadcrumb = ({ pathname }) => {
         color="var(--gray-06)"
       />
     );
-  if (pathname === "/respostas")
+  if (pathname === '/respostas')
     icon = (
       <IconVerb
         className="icon"
@@ -30,7 +30,7 @@ const Breadcrumb = ({ pathname }) => {
       />
     );
 
-  if (pathname === "/corte-substituicao")
+  if (pathname === '/corte-substituicao')
     icon = (
       <IconChange
         className="icon"
@@ -41,7 +41,7 @@ const Breadcrumb = ({ pathname }) => {
     );
 
   return (
-    <div className={styles.breadcrumbs}>
+    <div className={`${styles.breadcrumbs} ${'noPrint'}`}>
       <Link to="/" className={styles.link}>
         <IconHome
           className="icon"
@@ -59,7 +59,7 @@ const Breadcrumb = ({ pathname }) => {
       />
       <Link to={pathname} className={styles.link}>
         {icon}
-        <p className="textSmall">{pathname.replace("/", "")}</p>
+        <p className="textSmall">{pathname.replace('/', '')}</p>
       </Link>
     </div>
   );

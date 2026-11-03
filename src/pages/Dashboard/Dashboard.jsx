@@ -7,6 +7,7 @@ import { useGlobal } from '../../hooks/useGlobal';
 import TableNpsStore from '../../components/TableNPS/TableStoreNps';
 import ChartNps from '../../components/Charts/ChartNps';
 import ChartYearNps from '../../components/Charts/ChartYearNps';
+import FloatButton from '../../components/FloatButton/FloatButton';
 
 const Dashboard = () => {
   // hooks data definida pelo usuário
@@ -26,6 +27,7 @@ const Dashboard = () => {
         </div>
       </div>
       <TableNpsStore dados={date} />
+      <FloatButton onClick={() => window.print()} />
     </>
   );
 };
