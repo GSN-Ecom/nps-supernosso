@@ -9,7 +9,7 @@
     margin: 1%;
     padding: 0;
     background: var(--aux-white) !important;
-    color: var(9) !important;
+    color: var(--gray-09) !important;
     font-size: 10pt;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
