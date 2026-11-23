@@ -10,11 +10,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "chart.js": "^4.5.1",
+    "chart.js": "^4.6.1",
+    "chartjs-adapter-date-fns": "^3.0.0",
     "chartjs-plugin-datalabels": "^2.2.0",
+    "date-fns": "^4.4.0",
     "primeicons": "^8.0.1",
     "primereact": "^9.6.5",
     "react": "^19.2.8",
+    "react-chartjs-2": "^5.3.1",
     "react-dom": "^19.2.8",
     "react-router-dom": "^7.18.3"
   },
